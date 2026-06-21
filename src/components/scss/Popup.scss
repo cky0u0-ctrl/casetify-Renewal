@@ -23,6 +23,7 @@
 
     .popup-body {
         position: relative;
+
         img {
             width: 100%;
             display: block;
@@ -39,6 +40,7 @@
                 margin: 0;
                 line-height: 1.2;
             }
+
             .title {
                 font-weight: 800;
                 font-size: 1.5em;
@@ -48,13 +50,30 @@
 
             &.type-shipping {
                 top: 20%;
-                .desc { font-size: 16px; color: #666; }
+
+                .desc {
+                    font-size: 16px;
+                    color: #666;
+                }
             }
 
             &.type-membership {
-                .greet { font-size: 14px; margin-bottom: 8px; }
-                .info { font-size: 13px; margin-top: 20px; color: #444; }
-                .go-btn { margin-top: 15px; font-weight: 600; font-size: 15px; }
+                .greet {
+                    font-size: 14px;
+                    margin-bottom: 8px;
+                }
+
+                .info {
+                    font-size: 13px;
+                    margin-top: 20px;
+                    color: #444;
+                }
+
+                .go-btn {
+                    margin-top: 15px;
+                    font-weight: 600;
+                    font-size: 15px;
+                }
             }
         }
     }
@@ -72,15 +91,33 @@
         bottom: 0;
         right: 0;
 
-        button, span { color: #fff; font-size: 13px; background: none; border: none; cursor: pointer; }
-        .divider { margin: 0 10px; opacity: 0.3; }
-        .close-btn img { width: 16px; height: 16px; filter: invert(1); }
+        button,
+        span {
+            color: #fff;
+            font-size: 13px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .divider {
+            margin: 0 10px;
+            opacity: 0.3;
+        }
+
+        .close-btn img {
+            width: 16px;
+            height: 16px;
+            filter: invert(1);
+        }
     }
 }
 
 // 태블릿 이하: 팝업이 작아지고 세로로 쌓이도록
 @media (max-width: 1024px) {
-    .main-popup-content { width: 300px; }
+    .main-popup-content {
+        width: 300px;
+    }
 }
 
 // 모바일: 좌하단에 세로 정렬 + 폭 축소로 우하단 퀵 버튼과 겹치지 않게
@@ -102,6 +139,24 @@
     .main-popup-content {
         width: min(72vw, 280px);
 
-        .popup-footer { height: 44px; }
+        .popup-footer {
+            height: 44px;
+        }
     }
+}
+
+.main-popup-overlay {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    width: auto;
+    z-index: 9999;
+}
+
+.popup-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
 }

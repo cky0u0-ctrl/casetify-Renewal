@@ -1,11 +1,11 @@
 @use "../../App.scss" as g;
 
-.login-wrap{
+.login-wrap {
     margin: 80px 0;
     padding-top: 100px;
     position: relative;
 
-    .inner{
+    .inner {
         max-width: 500px;
         margin: 0 auto;
 
@@ -27,14 +27,20 @@
                 z-index: 5;
             }
 
-            input::placeholder { color: #aaaaaa; }
-            input:focus { outline: none; }
+            input::placeholder {
+                color: #aaaaaa;
+            }
+
+            input:focus {
+                outline: none;
+            }
 
             span {
                 display: block;
                 position: absolute;
                 bottom: 0;
-                left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+                left: 0%;
+                /* right로만 바꿔주면 오 - 왼 */
                 background-color: #666;
                 width: 0;
                 height: 2px;
@@ -51,14 +57,37 @@
                 transition: all .2s;
             }
 
-            input:focus ~ label, input:not(:placeholder-shown) ~ label {
+            input:focus~label,
+            input:not(:placeholder-shown)~label {
                 font-size: 1rem;
                 bottom: 40px;
                 color: #666;
             }
 
-            input:focus ~ span, input:not(:placeholder-shown) ~ span {
+            input:focus~span,
+            input:not(:placeholder-shown)~span {
                 width: 100%;
+            }
+
+            // 비밀번호 보기 토글 버튼: 입력란 오른쪽에 고정
+            .eye-btn {
+                position: absolute;
+                right: 10px;
+                bottom: 8px;
+                z-index: 6; // input(z-index:5)보다 위
+                line-height: 0;
+                cursor: pointer;
+
+                img {
+                    width: 22px;
+                    height: 22px;
+                    display: block;
+                }
+            }
+
+            // 비밀번호가 길어져도 눈 아이콘과 겹치지 않도록 여백 확보
+            #password {
+                padding-right: 36px;
             }
         }
 
@@ -123,7 +152,7 @@
             }
         }
 
-        .input-btn{
+        .input-btn {
             width: 100%;
             height: 60px;
             margin: 50px 0;
@@ -133,21 +162,23 @@
             font-size: 1rem;
             cursor: pointer;
         }
-        .input-btn:hover{
+
+        .input-btn:hover {
             color: #000;
             background: #fff;
         }
 
-        button{
+        button {
             background: none;
             border: 0;
         }
 
-        .login-option{
+        .login-option {
             @include g.myFlex($jc: center, $gap: 0);
             color: g.$text-sub;
-            div{
-                a{
+
+            div {
+                a {
                     line-height: 1.5;
                     vertical-align: middle;
                 }
@@ -166,13 +197,14 @@
             }
         }
 
-        .or-line{
+        .or-line {
             margin: 30px 0;
             text-align: center;
             position: relative;
             color: #999;
 
-            &::after, &::before{
+            &::after,
+            &::before {
                 content: "";
                 display: block;
                 position: absolute;
@@ -182,30 +214,34 @@
                 top: 50%;
                 transform: translateY(-50%);
             }
-            &::before{
+
+            &::before {
                 left: 0;
             }
-            &::after{
+
+            &::after {
                 right: 0;
             }
         }
 
-        .login-sns-box{
+        .login-sns-box {
             text-align: center;
             color: g.$text-sub;
 
-            .login-sns{
+            .login-sns {
                 @include g.myFlex($jc: center, $gap: 30px);
                 margin-top: 20px;
 
-                >div{
+                >div {
                     cursor: pointer;
                 }
             }
         }
-        .err-box{
+
+        .err-box {
             position: relative;
-            p{
+
+            p {
                 position: absolute;
                 width: 100%;
                 height: 20px;
@@ -247,7 +283,8 @@
                 }
             }
         }
-        .modal-overlay{
+
+        .modal-overlay {
             @include g.pos-center();
             @include g.myFlex($jc: center, $gap: unset);
             width: 500px;
@@ -258,7 +295,7 @@
             animation: fadeInLogin 0.5s ease-in-out forwards;
             border-radius: 40px;
 
-            &::before{
+            &::before {
                 content: "";
                 display: block;
                 position: absolute;
@@ -269,7 +306,8 @@
                 height: 100px;
                 background-size: cover;
             }
-            &::after{
+
+            &::after {
                 content: "";
                 display: block;
                 position: absolute;
@@ -280,33 +318,40 @@
                 height: 100px;
                 background-size: cover;
             }
-            .modal-content{
+
+            .modal-content {
                 width: 80%;
                 margin: 0 auto;
                 text-align: center;
 
-                .input-btn{
+                .input-btn {
                     margin: 10px 0;
                 }
             }
-            &.active{
+
+            &.active {
                 height: 200px;
                 border: 1px solid g.$text-strike;
             }
         }
 
         @keyframes fadeInLogin {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
     }
 }
 
-.join-wrap{
-    .inner{
+.join-wrap {
+    .inner {
         max-width: 900px;
-    
-        input{
+
+        input {
             font-size: 1rem;
             color: #222222;
             width: 100%;
@@ -316,19 +361,24 @@
             z-index: 1;
         }
 
-        input::placeholder { color: #aaaaaa; }
-        input:focus { outline: none; }
+        input::placeholder {
+            color: #aaaaaa;
+        }
 
-        input:read-only{
+        input:focus {
+            outline: none;
+        }
+
+        input:read-only {
             background: #ddd;
         }
 
-        .join-progress{
+        .join-progress {
             @include g.myFlex($jc: center, $gap: 70px);
             margin-bottom: 50px;
             position: relative;
 
-            &::before{
+            &::before {
                 content: "";
                 display: block;
                 height: 1px;
@@ -336,7 +386,8 @@
                 position: absolute;
                 background: #eee;
             }
-            li{
+
+            li {
                 background: #eee;
                 border-radius: 50%;
                 width: 80px;
@@ -344,17 +395,20 @@
                 position: relative;
                 text-align: center;
 
-                &.active{
+                &.active {
                     background: #000000;
-                    img{
+
+                    img {
                         filter: brightness(0) invert(1);
                     }
                 }
-                >div{
+
+                >div {
                     @include g.myFlex($jc: center, $gap: unset);
                     height: 100%;
                 }
-                span{
+
+                span {
                     position: absolute;
                     width: 100px;
                     bottom: -20px;
@@ -365,12 +419,12 @@
             }
         }
 
-        .line-b{
+        .line-b {
             border-bottom: #ddd 1px solid;
         }
 
         // ✅ 단계 표시 헤더
-        .join-substep{
+        .join-substep {
             display: flex;
             align-items: baseline;
             gap: 8px;
@@ -378,16 +432,18 @@
             padding-bottom: 16px;
             border-bottom: 2px solid g.$text-main;
 
-            .join-substep-now{
+            .join-substep-now {
                 font-size: 1.4em;
                 font-weight: 800;
                 color: g.$text-main;
             }
-            .join-substep-total{
+
+            .join-substep-total {
                 font-size: 1em;
                 color: #aaa;
             }
-            .join-substep-label{
+
+            .join-substep-label {
                 margin-left: 6px;
                 font-size: 1em;
                 font-weight: 600;
@@ -395,30 +451,41 @@
             }
         }
 
-        .join-step-panel{
+        .join-step-panel {
             animation: joinStepFade 0.25s ease;
         }
-        @keyframes joinStepFade{
-            from{ opacity: 0; transform: translateY(6px); }
-            to{ opacity: 1; transform: translateY(0); }
+
+        @keyframes joinStepFade {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         // ✅ 단계 이동 버튼
-        .join-step-nav{
-            .join-step-err{
+        .join-step-nav {
+            .join-step-err {
                 color: g.$text-sale;
                 font-size: 0.85em;
                 min-height: 1.2em;
                 margin-bottom: 12px;
                 text-align: center;
             }
-            .join-step-btns{
+
+            .join-step-btns {
                 display: flex;
                 gap: 12px;
 
-                .input-btn{ flex: 1; }
+                .input-btn {
+                    flex: 1;
+                }
 
-                .input-btn-ghost{
+                .input-btn-ghost {
                     background: #fff;
                     color: g.$text-main;
                     border: 1px solid g.$text-main;
@@ -427,27 +494,32 @@
             }
         }
 
-        .input-box{
+        .input-box {
             @include g.myFlex($jc: start, $gap: unset);
             padding: 30px 0;
-            .label-div{
+
+            .label-div {
                 width: 30%;
                 text-align: center;
-                span{
+
+                span {
                     color: g.$text-sale;
                     font-size: 0.7em;
                     padding-left: 5px;
                 }
             }
-            .input-div{
+
+            .input-div {
                 width: 100%;
                 margin-top: 0;
+
                 // position: relative;
-                input{
+                input {
                     border: 1px solid #aaa;
                     width: 80%;
                 }
-                p{
+
+                p {
                     position: absolute;
                     width: 100%;
                     height: 20px;
@@ -458,65 +530,75 @@
                     color: g.$text-sale;
                 }
 
-                .zonecode-box{
+                .zonecode-box {
                     @include g.myFlex($jc: start, $gap: unset);
-                    .zonecode-btn{
+
+                    .zonecode-btn {
                         padding: 10px 20px;
                         background: #000;
                         color: #fff;
                         margin-left: 10px;
                     }
                 }
-                
+
             }
-            .address-box{
-                >input{
+
+            .address-box {
+                >input {
                     margin-top: 10px;
                 }
             }
-            .react-datepicker-wrapper{
+
+            .react-datepicker-wrapper {
                 width: 100%;
             }
+
             .react-datepicker-popper {
                 z-index: 10;
             }
         }
 
-        .agree-wrap{
+        .agree-wrap {
             text-align: center;
             margin-top: 15px;
-            >div{
+
+            >div {
                 display: inline-block;
-                .agree-box{
+
+                .agree-box {
                     @include g.myFlex($jc: start, $gap: 10px);
                     margin-bottom: 5px;
-                    input{
+
+                    input {
                         width: auto;
                     }
-                    button{
+
+                    button {
                         padding: 1px;
                         border: 1px solid #ccc;
                         border-radius: 2px;
                         margin-left: 10px;
                         color: #999;
                     }
-                    .label-box{
-                        label{
+
+                    .label-box {
+                        label {
                             color: g.$text-sub;
                         }
                     }
                 }
             }
         }
-        .input-btn-box{
+
+        .input-btn-box {
             text-align: center;
             position: relative;
 
-            .input-btn{
+            .input-btn {
                 width: 500px;
             }
-            
-            p{
+
+            p {
                 position: absolute;
                 width: 100%;
                 height: 20px;
@@ -528,18 +610,19 @@
                 text-align: center
             }
         }
-        .post-modal{
-            .close-btn{
+
+        .post-modal {
+            .close-btn {
                 margin: 5px 0;
             }
         }
 
-        .complete-msg{
+        .complete-msg {
             margin: 180px 0;
             text-align: center;
             font-size: 2em;
 
-            &::after{
+            &::after {
                 content: "";
                 background-image: url("/images/waveBg-orange.png");
                 background-size: cover;
@@ -549,7 +632,8 @@
                 position: absolute;
                 left: 0;
             }
-            &.join-complete::after{
+
+            &.join-complete::after {
                 background-image: url(/images/waveBg-yellow.png);
                 top: 30%;
                 transform: rotate(10deg) scale(1.1);
@@ -557,10 +641,12 @@
                 z-index: -1;
                 opacity: 0.5;
             }
-            .input-btn{
+
+            .input-btn {
                 width: 500px;
             }
-            .coupon{
+
+            .coupon {
                 font-size: 0.88em;
                 color: g.$text-sale;
                 background: #FFE3E3;
@@ -570,7 +656,7 @@
             }
         }
 
-        .modal-agree{
+        .modal-agree {
             position: absolute;
             top: 70%;
             left: 50%;
@@ -583,26 +669,27 @@
             z-index: 10;
             animation: fadeIn 0.5s ease-in-out forwards;
 
-            .modal-agree-content{
+            .modal-agree-content {
                 width: 80%;
                 margin: 0 auto;
                 text-align: center;
 
-                .modal-div{
+                .modal-div {
                     height: 280px;
                     overflow-y: scroll;
                 }
 
-                ul{
-                    li{
+                ul {
+                    li {
                         margin-bottom: 20px;
-                        button{
+
+                        button {
                             width: 100%;
                             border: 1px solid g.$text-strike;
                             padding: 10px 0;
                             position: relative;
 
-                            &::after{
+                            &::after {
                                 content: "";
                                 position: absolute;
                                 left: 90%;
@@ -612,22 +699,25 @@
                                 background: url(/images/icon/icon-arrow-right.svg) no-repeat;
                             }
                         }
-                        >div{
+
+                        >div {
                             height: 0;
                             overflow-y: hidden;
 
-                            &.active{
+                            &.active {
                                 height: 280px;
                                 overflow-y: scroll;
                             }
                         }
                     }
                 }
-                .input-btn{
+
+                .input-btn {
                     margin: 10px 0;
                 }
             }
-            &.active{
+
+            &.active {
                 height: 200px;
                 border: 1px solid g.$text-strike;
             }
@@ -635,51 +725,61 @@
     }
 }
 
-.join-complete-wrap{
+.join-complete-wrap {
     position: relative;
-    .case1{
+
+    .case1 {
         position: absolute;
         width: 630px;
         height: 630px;
         left: 10%;
         top: 50%;
         transform: translateY(-50%);
-        img{
+
+        img {
             animation: float-up 2s ease-in-out infinite;
         }
     }
-    .case2{
+
+    .case2 {
         position: absolute;
         width: 315px;
         height: 315px;
         left: 10%;
         top: 60%;
-        img{
+
+        img {
             animation: float-down 2s ease-in-out infinite;
         }
     }
 }
 
 @keyframes float-up {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px); /* 위로 20px 이동 */
-  }
-  100% {
-    transform: translateY(0);
-  }
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+        /* 위로 20px 이동 */
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 @keyframes float-down {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(20px); /* 아래로 20px 이동 */
-  }
-  100% {
-    transform: translateY(0);
-  }
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+        /* 아래로 20px 이동 */
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
