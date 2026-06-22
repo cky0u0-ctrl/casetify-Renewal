@@ -344,7 +344,9 @@ export const useAuthStore = create(
             try {
                 // 1. 네이버 로그인 팝업 열기
                 const clientId = naverProvider;
-                const callbackUrl = encodeURIComponent("http://localhost:5173/login/naver");
+                const callbackUrl = encodeURIComponent(
+                    "https://casetifyrenewal.netlify.app/login/naver"
+                );
                 const state = "random_string";
                 const naverLoginUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=token&client_id=${clientId}&redirect_uri=${callbackUrl}&state=${state}`;
 
@@ -398,7 +400,7 @@ export const useAuthStore = create(
                     };
                     await setDoc(userRef, naverUser);
                     set({ user: naverUser });
-                }else{
+                } else {
                     const userData = userDoc.data();
                     const currentMonth = new Date().getMonth() + 1;
                     let updatedCoupons = [...(userData.coupons || [])];
@@ -524,7 +526,7 @@ export const useAuthStore = create(
 
             return `${year}년 ${month}월 ${day}일`;
         },
-        getThreeMonthsLater : () => {
+        getThreeMonthsLater: () => {
             const now = new Date();
             now.setMonth(now.getMonth() + 3); // 3개월 추가
 
@@ -616,12 +618,12 @@ export const useAuthStore = create(
                 const authTemplate = couponList.find(c => c.id === "auth");
                 if (!authTemplate) return "error"; // 템플릿이 없는 경우 예외 처리
 
-                const authCoupon = { 
+                const authCoupon = {
                     ...authTemplate,
                     limit: getThreeMonthsLater(), // 유효기간 설정
                     use: true // 사용 가능 상태로 추가
                 };
-                
+
                 const updatedCoupons = [...currentCoupons, authCoupon];
 
                 // 5. DB 및 로컬 상태 업데이트
@@ -1039,8 +1041,8 @@ export const useAuthStore = create(
             }
 
             let upgradeMessage = "";
-            const rewardMilestones = [{point: 50, label: 'bronze'}, {point: 120, label: 'silver'}, {point: 200, label: 'gold'}];
-    
+            const rewardMilestones = [{ point: 50, label: 'bronze' }, { point: 120, label: 'silver' }, { point: 200, label: 'gold' }];
+
             // 이전 포인트는 달성 못했지만, 새 포인트가 마일스톤을 넘었을 때 발급
             rewardMilestones.forEach(milestone => {
                 const oldPoint = user.point || 0;
@@ -1075,17 +1077,17 @@ export const useAuthStore = create(
                     orderList: updatedOrders,
                     cart: [],
                     checkedCart: [],
-                    user: { 
-                        ...user, 
+                    user: {
+                        ...user,
                         giftCard: updatedGiftCards,
                         coupons: updatedCoupons,
                         point: currentPoint
                     }
                 });
 
-                if(upgradeMessage !== ""){
+                if (upgradeMessage !== "") {
                     return upgradeMessage;
-                } 
+                }
                 return true;
             } catch (e) {
                 console.log("결제 저장 실패:", e.message);
