@@ -1,6 +1,6 @@
 # 📱 CASETiFY Website Renewal
 
-[케이스티파이.webm](https://github.com/user-attachments/assets/fb441fa2-9ee1-4e2f-b30b-cf0d83c0eba9)
+[케이스티파이.webm](https://github.com/user-attachments/assets/a0facbaf-323d-409d-af46-5030c2901fc1)
 CASETiFY 공식 홈페이지를 UX/UI 관점에서 리뉴얼한 React 프로젝트입니다.
 
 ## 🔗 Demo
