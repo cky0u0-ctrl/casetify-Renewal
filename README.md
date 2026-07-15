@@ -2,7 +2,9 @@
 
 <img width="1852" height="917" alt="케이스티파이" src="https://github.com/user-attachments/assets/1e906dda-4328-4bc4-9c43-30c1cf3f6460" />
 CASETiFY 공식 홈페이지를 UX/UI 관점에서 리뉴얼한 React 프로젝트입니다.
+
 시연영상 링크 : https://youtu.be/68uNTmS8pbg?si=cdeS9KIaEJprKK3e
+
 ## 🔗 Demo
 
 - Deploy : https://casetify-renewal.vercel.app
