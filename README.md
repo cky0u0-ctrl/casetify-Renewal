@@ -4,7 +4,7 @@ CASETiFY 공식 홈페이지를 UX/UI 관점에서 리뉴얼한 React 프로젝�
 
 ## 🔗 Demo
 
-- Deploy : 배포주소
+- Deploy : https://casetify-renewal.vercel.app
 - Portfolio : https://cky-protfolio.vercel.app
 
 ---
